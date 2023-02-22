@@ -217,21 +217,29 @@
 		605EFC8729A5E0B3000CEDD5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				605EFC8829A5E0BC000CEDD5 /* APIRouter.swift */,
-				605EFC8A29A5E666000CEDD5 /* Service */,
-				605EFC8B29A5E79F000CEDD5 /* DisplayServiceRouter.swift */,
-				605EFC8D29A5EB0E000CEDD5 /* DisplayServiceUseCase.swift */,
-				605EFC8F29A5F171000CEDD5 /* NetworkDispatcher.swift */,
-				605EFC9129A5F199000CEDD5 /* NetworkError.swift */,
+				605EFC9629A6098D000CEDD5 /* Common */,
+				605EFC8A29A5E666000CEDD5 /* DisplayService */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		605EFC8A29A5E666000CEDD5 /* Service */ = {
+		605EFC8A29A5E666000CEDD5 /* DisplayService */ = {
 			isa = PBXGroup;
 			children = (
+				605EFC8B29A5E79F000CEDD5 /* DisplayServiceRouter.swift */,
+				605EFC8D29A5EB0E000CEDD5 /* DisplayServiceUseCase.swift */,
 			);
-			path = Service;
+			path = DisplayService;
+			sourceTree = "<group>";
+		};
+		605EFC9629A6098D000CEDD5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				605EFC8829A5E0BC000CEDD5 /* APIRouter.swift */,
+				605EFC9129A5F199000CEDD5 /* NetworkError.swift */,
+				605EFC8F29A5F171000CEDD5 /* NetworkDispatcher.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

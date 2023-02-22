@@ -9,14 +9,11 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol NetworkDispatcher {
-    func fetch<T: Decodable>(
-        request: URLRequest,
-        dataType: T.Type
-    ) -> Observable<Result<T, NetworkError>>
-}
-
-extension NetworkDispatcher {
+final class NetworkDispatcher {
+    static let shared = NetworkDispatcher()
+    
+    private init() { }
+    
     func fetch<T: Decodable>(
         request: URLRequest,
         dataType: T.Type
