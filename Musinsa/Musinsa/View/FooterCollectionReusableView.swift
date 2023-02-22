@@ -46,6 +46,8 @@ final class FooterCollectionReusableView: BaseCollectionReusableView {
     }
     
     func configure(footer: Footer) {
+        let title = footer.type == .refresh ? .common(.newRecommend) : .common(.more)
+        button.setTitle(title for: .normal)
         if let iconURL = footer.iconURL {
             button.kf.setImage(with: iconURL)
         }

@@ -38,6 +38,7 @@
 		605EFCA429A6120E000CEDD5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFCA329A6120E000CEDD5 /* UIView+Extension.swift */; };
 		605EFCA729A61555000CEDD5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 605EFCA629A61555000CEDD5 /* Kingfisher */; };
 		605EFCA929A651D3000CEDD5 /* FooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFCA829A651D3000CEDD5 /* FooterCollectionReusableView.swift */; };
+		605EFCAB29A65FCB000CEDD5 /* StringResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFCAA29A65FCB000CEDD5 /* StringResource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		605EFCA029A60F3D000CEDD5 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		605EFCA329A6120E000CEDD5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		605EFCA829A651D3000CEDD5 /* FooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCollectionReusableView.swift; sourceTree = "<group>"; };
+		605EFCAA29A65FCB000CEDD5 /* StringResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 			children = (
 				605EFC4029A5B6CA000CEDD5 /* Assets.xcassets */,
 				605EFC4229A5B6CA000CEDD5 /* LaunchScreen.storyboard */,
+				605EFCAA29A65FCB000CEDD5 /* StringResource.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				605EFC7429A5CD2E000CEDD5 /* Style.swift in Sources */,
 				605EFCA429A6120E000CEDD5 /* UIView+Extension.swift in Sources */,
 				605EFC9D29A60E60000CEDD5 /* Identificable.swift in Sources */,
+				605EFCAB29A65FCB000CEDD5 /* StringResource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
