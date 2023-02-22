@@ -22,6 +22,10 @@
 		605EFC7429A5CD2E000CEDD5 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC7329A5CD2E000CEDD5 /* Style.swift */; };
 		605EFC7929A5CDC7000CEDD5 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC7829A5CDC7000CEDD5 /* Content.swift */; };
 		605EFC7B29A5D500000CEDD5 /* DisplaySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC7A29A5D500000CEDD5 /* DisplaySection.swift */; };
+		605EFC7E29A5DFDA000CEDD5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 605EFC7D29A5DFDA000CEDD5 /* Alamofire */; };
+		605EFC8129A5E020000CEDD5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 605EFC8029A5E020000CEDD5 /* RxCocoa */; };
+		605EFC8329A5E020000CEDD5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 605EFC8229A5E020000CEDD5 /* RxSwift */; };
+		605EFC8629A5E08F000CEDD5 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 605EFC8529A5E08F000CEDD5 /* ReactorKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				605EFC8329A5E020000CEDD5 /* RxSwift in Frameworks */,
+				605EFC8129A5E020000CEDD5 /* RxCocoa in Frameworks */,
+				605EFC8629A5E08F000CEDD5 /* ReactorKit in Frameworks */,
+				605EFC7E29A5DFDA000CEDD5 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +219,12 @@
 			dependencies = (
 			);
 			name = Musinsa;
+			packageProductDependencies = (
+				605EFC7D29A5DFDA000CEDD5 /* Alamofire */,
+				605EFC8029A5E020000CEDD5 /* RxCocoa */,
+				605EFC8229A5E020000CEDD5 /* RxSwift */,
+				605EFC8529A5E08F000CEDD5 /* ReactorKit */,
+			);
 			productName = Musinsa;
 			productReference = 605EFC3429A5B6C9000CEDD5 /* Musinsa.app */;
 			productType = "com.apple.product-type.application";
@@ -283,6 +297,11 @@
 				Base,
 			);
 			mainGroup = 605EFC2B29A5B6C9000CEDD5;
+			packageReferences = (
+				605EFC7C29A5DFDA000CEDD5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				605EFC7F29A5E020000CEDD5 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				605EFC8429A5E08F000CEDD5 /* XCRemoteSwiftPackageReference "ReactorKit" */,
+			);
 			productRefGroup = 605EFC3529A5B6C9000CEDD5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -668,6 +687,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		605EFC7C29A5DFDA000CEDD5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		605EFC7F29A5E020000CEDD5 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		605EFC8429A5E08F000CEDD5 /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		605EFC7D29A5DFDA000CEDD5 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 605EFC7C29A5DFDA000CEDD5 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		605EFC8029A5E020000CEDD5 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 605EFC7F29A5E020000CEDD5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		605EFC8229A5E020000CEDD5 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 605EFC7F29A5E020000CEDD5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		605EFC8529A5E08F000CEDD5 /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 605EFC8429A5E08F000CEDD5 /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 605EFC2C29A5B6C9000CEDD5 /* Project object */;
 }
