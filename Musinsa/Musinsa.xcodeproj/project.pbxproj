@@ -31,6 +31,9 @@
 		605EFC9029A5F171000CEDD5 /* NetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC8F29A5F171000CEDD5 /* NetworkDispatcher.swift */; };
 		605EFC9229A5F199000CEDD5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC9129A5F199000CEDD5 /* NetworkError.swift */; };
 		605EFC9529A60591000CEDD5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 605EFC9429A60591000CEDD5 /* SnapKit */; };
+		605EFC9B29A60E0E000CEDD5 /* BaseCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC9A29A60E0E000CEDD5 /* BaseCollectionReusableView.swift */; };
+		605EFC9D29A60E60000CEDD5 /* Identificable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC9C29A60E60000CEDD5 /* Identificable.swift */; };
+		605EFC9F29A60EF3000CEDD5 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC9E29A60EF3000CEDD5 /* BaseCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,9 @@
 		605EFC8D29A5EB0E000CEDD5 /* DisplayServiceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayServiceUseCase.swift; sourceTree = "<group>"; };
 		605EFC8F29A5F171000CEDD5 /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
 		605EFC9129A5F199000CEDD5 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		605EFC9A29A60E0E000CEDD5 /* BaseCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionReusableView.swift; sourceTree = "<group>"; };
+		605EFC9C29A60E60000CEDD5 /* Identificable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identificable.swift; sourceTree = "<group>"; };
+		605EFC9E29A60EF3000CEDD5 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +141,7 @@
 				605EFC9729A60C73000CEDD5 /* Application */,
 				605EFC8729A5E0B3000CEDD5 /* Network */,
 				605EFC6A29A5C9E8000CEDD5 /* Model */,
+				605EFC9829A60CCC000CEDD5 /* View */,
 				605EFC6729A5B7EF000CEDD5 /* Resources */,
 				605EFC3B29A5B6C9000CEDD5 /* ViewController.swift */,
 			);
@@ -248,6 +255,24 @@
 				605EFC3929A5B6C9000CEDD5 /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		605EFC9829A60CCC000CEDD5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				605EFC9929A60DFD000CEDD5 /* Common */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		605EFC9929A60DFD000CEDD5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				605EFC9A29A60E0E000CEDD5 /* BaseCollectionReusableView.swift */,
+				605EFC9C29A60E60000CEDD5 /* Identificable.swift */,
+				605EFC9E29A60EF3000CEDD5 /* BaseCollectionViewCell.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,16 +421,19 @@
 				605EFC3C29A5B6C9000CEDD5 /* ViewController.swift in Sources */,
 				605EFC9029A5F171000CEDD5 /* NetworkDispatcher.swift in Sources */,
 				605EFC6C29A5C9F2000CEDD5 /* Banner.swift in Sources */,
+				605EFC9B29A60E0E000CEDD5 /* BaseCollectionReusableView.swift in Sources */,
 				605EFC8E29A5EB0E000CEDD5 /* DisplayServiceUseCase.swift in Sources */,
 				605EFC3829A5B6C9000CEDD5 /* AppDelegate.swift in Sources */,
 				605EFC3A29A5B6C9000CEDD5 /* SceneDelegate.swift in Sources */,
 				605EFC7929A5CDC7000CEDD5 /* Contents.swift in Sources */,
 				605EFC9229A5F199000CEDD5 /* NetworkError.swift in Sources */,
+				605EFC9F29A60EF3000CEDD5 /* BaseCollectionViewCell.swift in Sources */,
 				605EFC7B29A5D500000CEDD5 /* DisplaySection.swift in Sources */,
 				605EFC8929A5E0BC000CEDD5 /* APIRouter.swift in Sources */,
 				605EFC7029A5CB14000CEDD5 /* Header.swift in Sources */,
 				605EFC6E29A5CA34000CEDD5 /* Footer.swift in Sources */,
 				605EFC7429A5CD2E000CEDD5 /* Style.swift in Sources */,
+				605EFC9D29A60E60000CEDD5 /* Identificable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
