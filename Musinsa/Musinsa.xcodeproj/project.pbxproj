@@ -49,6 +49,7 @@
 		605EFC5429A5B6CA000CEDD5 /* MusinsaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusinsaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		605EFC5829A5B6CA000CEDD5 /* MusinsaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusinsaUITests.swift; sourceTree = "<group>"; };
 		605EFC5A29A5B6CA000CEDD5 /* MusinsaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusinsaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		605EFC6929A5C65F000CEDD5 /* Resource */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Resource; path = ../Resource; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 		605EFC2B29A5B6C9000CEDD5 = {
 			isa = PBXGroup;
 			children = (
+				605EFC6829A5C65F000CEDD5 /* Packages */,
 				605EFC3629A5B6C9000CEDD5 /* Musinsa */,
 				605EFC4D29A5B6CA000CEDD5 /* MusinsaTests */,
 				605EFC5729A5B6CA000CEDD5 /* MusinsaUITests */,
@@ -133,6 +135,14 @@
 				605EFC4229A5B6CA000CEDD5 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		605EFC6829A5C65F000CEDD5 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				605EFC6929A5C65F000CEDD5 /* Resource */,
+			);
+			name = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
