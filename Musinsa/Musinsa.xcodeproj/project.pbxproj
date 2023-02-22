@@ -131,13 +131,12 @@
 		605EFC3629A5B6C9000CEDD5 /* Musinsa */ = {
 			isa = PBXGroup;
 			children = (
+				605EFC4529A5B6CA000CEDD5 /* Info.plist */,
+				605EFC9729A60C73000CEDD5 /* Application */,
 				605EFC8729A5E0B3000CEDD5 /* Network */,
 				605EFC6A29A5C9E8000CEDD5 /* Model */,
 				605EFC6729A5B7EF000CEDD5 /* Resources */,
-				605EFC3729A5B6C9000CEDD5 /* AppDelegate.swift */,
-				605EFC3929A5B6C9000CEDD5 /* SceneDelegate.swift */,
 				605EFC3B29A5B6C9000CEDD5 /* ViewController.swift */,
-				605EFC4529A5B6CA000CEDD5 /* Info.plist */,
 			);
 			path = Musinsa;
 			sourceTree = "<group>";
@@ -240,6 +239,15 @@
 				605EFC8F29A5F171000CEDD5 /* NetworkDispatcher.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		605EFC9729A60C73000CEDD5 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				605EFC3729A5B6C9000CEDD5 /* AppDelegate.swift */,
+				605EFC3929A5B6C9000CEDD5 /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
