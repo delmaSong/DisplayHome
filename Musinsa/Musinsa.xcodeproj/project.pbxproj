@@ -26,6 +26,7 @@
 		605EFC8129A5E020000CEDD5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 605EFC8029A5E020000CEDD5 /* RxCocoa */; };
 		605EFC8329A5E020000CEDD5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 605EFC8229A5E020000CEDD5 /* RxSwift */; };
 		605EFC8629A5E08F000CEDD5 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 605EFC8529A5E08F000CEDD5 /* ReactorKit */; };
+		605EFC8929A5E0BC000CEDD5 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC8829A5E0BC000CEDD5 /* APIRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		605EFC7329A5CD2E000CEDD5 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		605EFC7829A5CDC7000CEDD5 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		605EFC7A29A5D500000CEDD5 /* DisplaySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySection.swift; sourceTree = "<group>"; };
+		605EFC8829A5E0BC000CEDD5 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		605EFC3629A5B6C9000CEDD5 /* Musinsa */ = {
 			isa = PBXGroup;
 			children = (
+				605EFC8729A5E0B3000CEDD5 /* Network */,
 				605EFC6A29A5C9E8000CEDD5 /* Model */,
 				605EFC6729A5B7EF000CEDD5 /* Resources */,
 				605EFC3729A5B6C9000CEDD5 /* AppDelegate.swift */,
@@ -201,6 +204,14 @@
 				605EFC7A29A5D500000CEDD5 /* DisplaySection.swift */,
 			);
 			path = Contents;
+			sourceTree = "<group>";
+		};
+		605EFC8729A5E0B3000CEDD5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				605EFC8829A5E0BC000CEDD5 /* APIRouter.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,6 +362,7 @@
 				605EFC3A29A5B6C9000CEDD5 /* SceneDelegate.swift in Sources */,
 				605EFC7929A5CDC7000CEDD5 /* Content.swift in Sources */,
 				605EFC7B29A5D500000CEDD5 /* DisplaySection.swift in Sources */,
+				605EFC8929A5E0BC000CEDD5 /* APIRouter.swift in Sources */,
 				605EFC7029A5CB14000CEDD5 /* Header.swift in Sources */,
 				605EFC6E29A5CA34000CEDD5 /* Footer.swift in Sources */,
 				605EFC7429A5CD2E000CEDD5 /* Style.swift in Sources */,
@@ -535,6 +547,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				MUSINSA_API_URL = "https://meta.musinsa.com";
 				PRODUCT_BUNDLE_IDENTIFIER = com.delmaSong.Musinsa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -563,6 +576,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				MUSINSA_API_URL = "https://meta.musinsa.com";
 				PRODUCT_BUNDLE_IDENTIFIER = com.delmaSong.Musinsa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
