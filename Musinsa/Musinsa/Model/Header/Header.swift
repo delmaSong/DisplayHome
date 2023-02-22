@@ -9,6 +9,6 @@ import Foundation
 
 struct Header: Decodable {
     let title: String
-    let iconURL: String?
-    let linkURL: String?
+    let iconURL: URL?
+    let linkURL: URL?
 }

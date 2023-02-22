@@ -8,8 +8,8 @@
 import Foundation
 
 protocol Content: Decodable {
-    var linkURL: String { get }
-    var thumbnailURL: String { get }
+    var linkURL: URL { get }
+    var thumbnailURL: URL { get }
 }
 
 struct Contents: Decodable {

@@ -8,8 +8,8 @@
 import Foundation
 
 struct Banner: Content {
-    let linkURL: String
-    let thumbnailURL: String
+    let linkURL: URL
+    let thumbnailURL: URL
     let title: String
     let description: String
     let keyword: String

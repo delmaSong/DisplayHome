@@ -8,8 +8,8 @@
 import Foundation
 
 struct Goods: Content {
-    let linkURL: String
-    let thumbnailURL: String
+    let linkURL: URL
+    let thumbnailURL: URL
     let brandName: String
     let price: Int
     let saleRate: Int

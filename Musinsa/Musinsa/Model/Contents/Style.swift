@@ -8,6 +8,6 @@
 import Foundation
 
 struct Style: Content {
-    let linkURL: String
-    let thumbnailURL: String
+    let linkURL: URL
+    let thumbnailURL: URL
 }
