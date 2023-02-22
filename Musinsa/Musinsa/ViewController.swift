@@ -14,17 +14,6 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
-        let useCase = DisplayServiceUseCase()
-        
-        useCase.fetchList()
-            .subscribe { event in
-                switch event {
-                case .success(let data):
-                    print(data)
-                case .failure(let error):
-                    print(error)
-                }
-            }.disposed(by: disposeBag)
+
     }
 }

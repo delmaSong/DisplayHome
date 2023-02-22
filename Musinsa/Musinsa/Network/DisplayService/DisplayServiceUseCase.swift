@@ -12,14 +12,13 @@ final class DisplayServiceUseCase {
     
     typealias router = DisplayServiceRouter
     
-    func fetchList() -> Single<WrappedDisplaySection?> {
+    func fetchList() -> Observable<WrappedDisplaySection?> {
         let request = router.list.asURLRequest()!
 
         return NetworkDispatcher.shared.fetch(
             request: request,
             dataType: WrappedDisplaySection.self
         )
-        .asSingle()
         .map { result -> WrappedDisplaySection? in
             switch result {
             case .success(let section):
