@@ -14,6 +14,6 @@ struct Footer: Decodable {
     }
     
     let title: String
-    let iconURL: String
+    let iconURL: String?
     let type: `Type`
 }
