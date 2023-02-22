@@ -8,10 +8,16 @@
 import Foundation
 import Alamofire
 
-protocol APIRouter: URLRequestConvertible {
+enum HTTPMethod: String {
+    case get, post, put, patch, delete
+}
+
+protocol APIRouter {
     var baseURL: String { get }
-    var method: HTTPMethod { get }
     var path: String { get }
+    var method: HTTPMethod { get }
+    
+    func asURLRequest() -> URLRequest?
 }
 
 extension APIRouter {
@@ -19,12 +25,10 @@ extension APIRouter {
         return Bundle.main.infoDictionary!["BaseURL"] as! String
     }
     
-    func getBaseRequest() throws -> URLRequest {
-        let base = try baseURL.asURL()
-
-        var urlRequest = URLRequest(url: base.appendingPathComponent(path))
-        urlRequest.httpMethod = method.rawValue
-
-        return urlRequest
+    func asURLRequest() -> URLRequest? {
+        guard let url = URL(string: baseURL + path) else { return nil }
+        var request = URLRequest(url: url)
+        request.httpMethod = self.method.rawValue
+        return request
     }
 }
