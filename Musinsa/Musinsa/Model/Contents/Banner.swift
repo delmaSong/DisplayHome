@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Banner: Decodable {
-    let linkeURL: String
+struct Banner: Content {
+    let linkURL: String
     let thumbnailURL: String
     let title: String
     let description: String

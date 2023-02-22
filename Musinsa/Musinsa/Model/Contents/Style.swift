@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Style: Decodable {
+struct Style: Content {
     let linkURL: String
     let thumbnailURL: String
 }

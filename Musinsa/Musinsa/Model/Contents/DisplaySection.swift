@@ -13,6 +13,6 @@ struct WrappedDisplaySection: Decodable {
 
 struct DisplaySection: Decodable {
     let header: Header?
-    let contents: [Content]?
+    let contents: Contents?
     let footer: Footer?
 }

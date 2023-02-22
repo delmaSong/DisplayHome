@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Goods: Decodable {
+struct Goods: Content {
     let linkURL: String
     let thumbnailURL: String
     let brandName: String
