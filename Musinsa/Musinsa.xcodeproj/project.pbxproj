@@ -34,6 +34,7 @@
 		605EFC9B29A60E0E000CEDD5 /* BaseCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC9A29A60E0E000CEDD5 /* BaseCollectionReusableView.swift */; };
 		605EFC9D29A60E60000CEDD5 /* Identificable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC9C29A60E60000CEDD5 /* Identificable.swift */; };
 		605EFC9F29A60EF3000CEDD5 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC9E29A60EF3000CEDD5 /* BaseCollectionViewCell.swift */; };
+		605EFCA429A6120E000CEDD5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFCA329A6120E000CEDD5 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		605EFC9A29A60E0E000CEDD5 /* BaseCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionReusableView.swift; sourceTree = "<group>"; };
 		605EFC9C29A60E60000CEDD5 /* Identificable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identificable.swift; sourceTree = "<group>"; };
 		605EFC9E29A60EF3000CEDD5 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		605EFCA329A6120E000CEDD5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				605EFC8729A5E0B3000CEDD5 /* Network */,
 				605EFC6A29A5C9E8000CEDD5 /* Model */,
 				605EFC9829A60CCC000CEDD5 /* View */,
+				605EFCA229A61201000CEDD5 /* Extension */,
 				605EFC6729A5B7EF000CEDD5 /* Resources */,
 				605EFC3B29A5B6C9000CEDD5 /* ViewController.swift */,
 			);
@@ -273,6 +276,14 @@
 				605EFC9E29A60EF3000CEDD5 /* BaseCollectionViewCell.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		605EFCA229A61201000CEDD5 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				605EFCA329A6120E000CEDD5 /* UIView+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,6 +444,7 @@
 				605EFC7029A5CB14000CEDD5 /* Header.swift in Sources */,
 				605EFC6E29A5CA34000CEDD5 /* Footer.swift in Sources */,
 				605EFC7429A5CD2E000CEDD5 /* Style.swift in Sources */,
+				605EFCA429A6120E000CEDD5 /* UIView+Extension.swift in Sources */,
 				605EFC9D29A60E60000CEDD5 /* Identificable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
