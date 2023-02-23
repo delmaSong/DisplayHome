@@ -49,6 +49,15 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        thumbnavilImageView.image = nil
+        couponButton.isHidden = true
+        brandLabel.text = nil
+        priceLabel.text = nil
+        saleRateLabel.text = nil
+    }
+    
     override func addSubviews() {
         super.addSubviews()
         
