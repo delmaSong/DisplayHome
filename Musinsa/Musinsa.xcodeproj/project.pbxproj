@@ -39,6 +39,8 @@
 		605EFCA729A61555000CEDD5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 605EFCA629A61555000CEDD5 /* Kingfisher */; };
 		605EFCA929A651D3000CEDD5 /* FooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFCA829A651D3000CEDD5 /* FooterCollectionReusableView.swift */; };
 		605EFCAB29A65FCB000CEDD5 /* StringResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFCAA29A65FCB000CEDD5 /* StringResource.swift */; };
+		605EFCAD29A6638B000CEDD5 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFCAC29A6638B000CEDD5 /* ProductCollectionViewCell.swift */; };
+		605EFCAF29A739C7000CEDD5 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFCAE29A739C7000CEDD5 /* Int+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		605EFCA329A6120E000CEDD5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		605EFCA829A651D3000CEDD5 /* FooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		605EFCAA29A65FCB000CEDD5 /* StringResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResource.swift; sourceTree = "<group>"; };
+		605EFCAC29A6638B000CEDD5 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		605EFCAE29A739C7000CEDD5 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +279,7 @@
 				605EFC9929A60DFD000CEDD5 /* Common */,
 				605EFCA029A60F3D000CEDD5 /* HeaderCollectionReusableView.swift */,
 				605EFCA829A651D3000CEDD5 /* FooterCollectionReusableView.swift */,
+				605EFCAC29A6638B000CEDD5 /* ProductCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -293,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				605EFCA329A6120E000CEDD5 /* UIView+Extension.swift */,
+				605EFCAE29A739C7000CEDD5 /* Int+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -449,6 +455,8 @@
 				605EFC8E29A5EB0E000CEDD5 /* DisplayServiceUseCase.swift in Sources */,
 				605EFCA929A651D3000CEDD5 /* FooterCollectionReusableView.swift in Sources */,
 				605EFC3829A5B6C9000CEDD5 /* AppDelegate.swift in Sources */,
+				605EFCAF29A739C7000CEDD5 /* Int+Extension.swift in Sources */,
+				605EFCAD29A6638B000CEDD5 /* ProductCollectionViewCell.swift in Sources */,
 				605EFC3A29A5B6C9000CEDD5 /* SceneDelegate.swift in Sources */,
 				605EFC7929A5CDC7000CEDD5 /* Contents.swift in Sources */,
 				605EFCA129A60F3D000CEDD5 /* HeaderCollectionReusableView.swift in Sources */,

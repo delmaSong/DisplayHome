@@ -31,5 +31,9 @@ extension String {
         case newRecommend = "새로운 추천"
         /// 더보기
         case more = "더보기"
+        /// 원
+        case won = "원"
+        /// %
+        case percent = "%"
     }
 }
