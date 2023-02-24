@@ -14,8 +14,8 @@ import RxCocoa
 final class HeaderCollectionReusableView: BaseCollectionReusableView {
     private let titleLabel: UILabel = {
         let view = UILabel()
-        view.font = Resource.font.header2
-        view.textColor = Resource.color.black
+        view.font = Resource.Font.header2
+        view.textColor = Resource.Color.black
         return view
     }()
     
@@ -28,8 +28,8 @@ final class HeaderCollectionReusableView: BaseCollectionReusableView {
     
     private let allButton: UIButton = {
         let view = UIButton()
-        view.titleLabel?.font = Resource.font.body1
-        view.setTitleColor(Resource.color.gray100, for: .normal)
+        view.titleLabel?.font = Resource.Font.body1
+        view.setTitleColor(Resource.Color.gray100, for: .normal)
         view.isHidden = true
         return view
     }()

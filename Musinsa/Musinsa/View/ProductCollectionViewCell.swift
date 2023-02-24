@@ -20,9 +20,9 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
     private let couponButton: UIButton = {
         let view = UIButton()
         view.setTitle(.common(.coupon), for: .normal)
-        view.setTitleColor(Resource.color.white, for: .normal)
-        view.titleLabel?.font = Resource.font.body1
-        view.backgroundColor = Resource.color.blue100
+        view.setTitleColor(Resource.Color.white, for: .normal)
+        view.titleLabel?.font = Resource.Font.body1
+        view.backgroundColor = Resource.Color.blue100
         view.titleEdgeInsets = .init(top: 4, left: 9, bottom: 4, right: 9)
         view.isHidden = true
         return view
@@ -30,22 +30,22 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
     
     private let brandLabel: UILabel = {
         let view = UILabel()
-        view.font = Resource.font.subtitle1
-        view.textColor = Resource.color.gray400
+        view.font = Resource.Font.subtitle1
+        view.textColor = Resource.Color.gray400
         return view
     }()
     
     private let priceLabel: UILabel = {
         let view = UILabel()
-        view.font = Resource.font.title3
-        view.textColor = Resource.color.black
+        view.font = Resource.Font.title3
+        view.textColor = Resource.Color.black
         return view
     }()
     
     private let saleRateLabel: UILabel = {
         let view = UILabel()
-        view.font = Resource.font.title3
-        view.textColor = Resource.color.red100
+        view.font = Resource.Font.title3
+        view.textColor = Resource.Color.red100
         return view
     }()
     
@@ -99,7 +99,7 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
         couponButton.isHidden = !goods.hasCoupon
         brandLabel.text = goods.brandName
         let discountedPrice = (100 - goods.saleRate) % 100 * goods.price
-        priceLabel = discountedPrice.insertComma() + .common(.won)
-        saleRateLabel.text = goods.saleRate + .common(.percent)
+        priceLabel.text = discountedPrice.insertComma() + .common(.won)
+        saleRateLabel.text = "\(goods.saleRate)" + .common(.percent)
     }
 }

@@ -11,12 +11,6 @@ protocol StringCreatable {
     func text() -> String
 }
 
-extension StringCreatable {
-    func text() -> String {
-        return NSLocalizedString(self.rawValue, comment: "")
-    }
-}
-
 extension String {
     static func common(_ common: Common) -> String {
         common.text()
@@ -35,5 +29,9 @@ extension String {
         case won = "원"
         /// %
         case percent = "%"
+        
+        func text() -> String {
+            return NSLocalizedString(self.rawValue, comment: "")
+        }
     }
 }

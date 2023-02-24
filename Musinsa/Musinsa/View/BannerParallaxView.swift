@@ -5,13 +5,13 @@
 //  Created by Delma Song on 2023/02/23.
 //
 
-import Foundation
+import UIKit
 import SnapKit
 import Resource
 import Kingfisher
 
 final class BannerParallaxView: BaseView {
-    private let imageView: UIImageView = {
+    let imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
         return view
@@ -19,15 +19,15 @@ final class BannerParallaxView: BaseView {
     
     private let titleLabel: UILabel = {
         let view = UILabel()
-        view.textColor = Resource.color.white
-        view.font = Resource.font.header2
+        view.textColor = Resource.Color.white
+        view.font = Resource.Font.header2
         return view
     }()
     
     private let subtitleLabel: UILabel = {
         let view = UILabel()
-        view.textColor = Resource.color.white
-        view.font = Resource.font.title2
+        view.textColor = Resource.Color.white
+        view.font = Resource.Font.title2
         return view
     }()
     
@@ -45,7 +45,7 @@ final class BannerParallaxView: BaseView {
         super.configureConstraints()
         
         imageView.snp.makeConstraints {
-            $$0.edges.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         titleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()

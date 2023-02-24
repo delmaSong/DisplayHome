@@ -5,13 +5,13 @@
 //  Created by Delma Song on 2023/02/23.
 //
 
-import Foundation
+import UIKit
 import SnapKit
 
 final class BannerCollectionView: BaseCollectionViewCell {
     private var banners: [Banner]?
     
-    private let scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.isPagingEnabled = true
         view.delegate = self
