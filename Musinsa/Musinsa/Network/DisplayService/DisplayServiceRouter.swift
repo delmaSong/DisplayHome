@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Alamofire
-
 enum DisplayServiceRouter: APIRouter {
     case list
     
