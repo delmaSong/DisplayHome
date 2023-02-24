@@ -1,5 +1,5 @@
 //
-//  BannerCollectionView.swift
+//  BannerCollectionViewCell.swift
 //  Musinsa
 //
 //  Created by Delma Song on 2023/02/23.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class BannerCollectionView: BaseCollectionViewCell {
+final class BannerCollectionViewCell: BaseCollectionViewCell {
     private var banners: [Banner]?
     
     private lazy var scrollView: UIScrollView = {
@@ -52,7 +52,7 @@ final class BannerCollectionView: BaseCollectionViewCell {
 
 // MARK: - UIScrollViewDelegate
 
-extension BannerCollectionView: UIScrollViewDelegate {
+extension BannerCollectionViewCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let tempo = 200 / scrollView.frame.width
         guard let banners = self.banners else { return }
