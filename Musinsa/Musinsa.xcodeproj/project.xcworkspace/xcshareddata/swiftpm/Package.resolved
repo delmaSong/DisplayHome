@@ -5,8 +5,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher.git",
       "state" : {
-        "revision" : "415b1d97fb38bda1e5a6b2dde63354720832110b",
-        "version" : "7.6.1"
+        "revision" : "af4be924ad984cf4d16f4ae4df424e79a443d435",
+        "version" : "7.6.2"
+      }
+    },
+    {
+      "identity" : "musinsaresources",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/delmaSong/MusinsaResources.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "d7406052b2c22554e5049c79223133b1c7ab6adc"
       }
     },
     {

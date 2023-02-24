@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		600D9EF729A8D0D800BB6155 /* Resource in Frameworks */ = {isa = PBXBuildFile; productRef = 600D9EF629A8D0D800BB6155 /* Resource */; };
 		605EFC3829A5B6C9000CEDD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC3729A5B6C9000CEDD5 /* AppDelegate.swift */; };
 		605EFC3A29A5B6C9000CEDD5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC3929A5B6C9000CEDD5 /* SceneDelegate.swift */; };
 		605EFC3C29A5B6C9000CEDD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC3B29A5B6C9000CEDD5 /* ViewController.swift */; };
@@ -77,7 +78,6 @@
 		605EFC5429A5B6CA000CEDD5 /* MusinsaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusinsaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		605EFC5829A5B6CA000CEDD5 /* MusinsaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusinsaUITests.swift; sourceTree = "<group>"; };
 		605EFC5A29A5B6CA000CEDD5 /* MusinsaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusinsaUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		605EFC6929A5C65F000CEDD5 /* Resource */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Resource; sourceTree = "<group>"; };
 		605EFC6B29A5C9F2000CEDD5 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		605EFC6D29A5CA34000CEDD5 /* Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
 		605EFC6F29A5CB14000CEDD5 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
@@ -110,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				600D9EF729A8D0D800BB6155 /* Resource in Frameworks */,
 				605EFC8329A5E020000CEDD5 /* RxSwift in Frameworks */,
 				605EFC9529A60591000CEDD5 /* SnapKit in Frameworks */,
 				605EFC8129A5E020000CEDD5 /* RxCocoa in Frameworks */,
@@ -138,7 +139,6 @@
 		605EFC2B29A5B6C9000CEDD5 = {
 			isa = PBXGroup;
 			children = (
-				605EFC6929A5C65F000CEDD5 /* Resource */,
 				605EFC3629A5B6C9000CEDD5 /* Musinsa */,
 				605EFC4D29A5B6CA000CEDD5 /* MusinsaTests */,
 				605EFC5729A5B6CA000CEDD5 /* MusinsaUITests */,
@@ -329,6 +329,7 @@
 				605EFC8529A5E08F000CEDD5 /* ReactorKit */,
 				605EFC9429A60591000CEDD5 /* SnapKit */,
 				605EFCA629A61555000CEDD5 /* Kingfisher */,
+				600D9EF629A8D0D800BB6155 /* Resource */,
 			);
 			productName = Musinsa;
 			productReference = 605EFC3429A5B6C9000CEDD5 /* Musinsa.app */;
@@ -407,6 +408,7 @@
 				605EFC8429A5E08F000CEDD5 /* XCRemoteSwiftPackageReference "ReactorKit" */,
 				605EFC9329A60591000CEDD5 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				605EFCA529A61555000CEDD5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				600D9EF529A8D0D800BB6155 /* XCRemoteSwiftPackageReference "MusinsaResources" */,
 			);
 			productRefGroup = 605EFC3529A5B6C9000CEDD5 /* Products */;
 			projectDirPath = "";
@@ -815,6 +817,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		600D9EF529A8D0D800BB6155 /* XCRemoteSwiftPackageReference "MusinsaResources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/delmaSong/MusinsaResources.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		605EFC7F29A5E020000CEDD5 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -850,6 +860,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		600D9EF629A8D0D800BB6155 /* Resource */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 600D9EF529A8D0D800BB6155 /* XCRemoteSwiftPackageReference "MusinsaResources" */;
+			productName = Resource;
+		};
 		605EFC8029A5E020000CEDD5 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 605EFC7F29A5E020000CEDD5 /* XCRemoteSwiftPackageReference "RxSwift" */;
