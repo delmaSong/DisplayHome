@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		600D9EF729A8D0D800BB6155 /* Resource in Frameworks */ = {isa = PBXBuildFile; productRef = 600D9EF629A8D0D800BB6155 /* Resource */; };
+		600D9EFB29A8D42E00BB6155 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600D9EFA29A8D42E00BB6155 /* BaseViewController.swift */; };
 		605EFC3829A5B6C9000CEDD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC3729A5B6C9000CEDD5 /* AppDelegate.swift */; };
 		605EFC3A29A5B6C9000CEDD5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC3929A5B6C9000CEDD5 /* SceneDelegate.swift */; };
 		605EFC3C29A5B6C9000CEDD5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EFC3B29A5B6C9000CEDD5 /* HomeViewController.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		600D9EFA29A8D42E00BB6155 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		605EFC3429A5B6C9000CEDD5 /* Musinsa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Musinsa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		605EFC3729A5B6C9000CEDD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		605EFC3929A5B6C9000CEDD5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				605EFC9C29A60E60000CEDD5 /* Identificable.swift */,
 				605EFC9E29A60EF3000CEDD5 /* BaseCollectionViewCell.swift */,
 				605EFCB629A74D28000CEDD5 /* BaseView.swift */,
+				600D9EFA29A8D42E00BB6155 /* BaseViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				605EFCA429A6120E000CEDD5 /* UIView+Extension.swift in Sources */,
 				605EFC9D29A60E60000CEDD5 /* Identificable.swift in Sources */,
 				605EFCAB29A65FCB000CEDD5 /* StringResource.swift in Sources */,
+				600D9EFB29A8D42E00BB6155 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
