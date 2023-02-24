@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  Musinsa
 //
 //  Created by Delma Song on 2023/02/22.
@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-final class ViewController: UIViewController {
+final class HomeViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
