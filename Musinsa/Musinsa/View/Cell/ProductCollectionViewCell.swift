@@ -13,7 +13,8 @@ import Kingfisher
 final class ProductCollectionViewCell: BaseCollectionViewCell {
     private let thumbnavilImageView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
         return view
     }()
     
@@ -21,7 +22,7 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
         let view = UIButton()
         view.setTitle(.common(.coupon), for: .normal)
         view.setTitleColor(Resource.Color.white, for: .normal)
-        view.titleLabel?.font = Resource.Font.body1
+        view.titleLabel?.font = .systemFont(ofSize: 10, weight: .regular)
         view.backgroundColor = Resource.Color.blue100
         view.titleEdgeInsets = .init(top: 4, left: 9, bottom: 4, right: 9)
         view.isHidden = true
@@ -30,21 +31,21 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
     
     private let brandLabel: UILabel = {
         let view = UILabel()
-        view.font = Resource.Font.subtitle1
+        view.font = .systemFont(ofSize: 12, weight: .medium)
         view.textColor = Resource.Color.gray400
         return view
     }()
     
     private let priceLabel: UILabel = {
         let view = UILabel()
-        view.font = Resource.Font.title3
+        view.font = .systemFont(ofSize: 14, weight: .semibold)
         view.textColor = Resource.Color.black
         return view
     }()
     
     private let saleRateLabel: UILabel = {
         let view = UILabel()
-        view.font = Resource.Font.title3
+        view.font = .systemFont(ofSize: 14, weight: .semibold)
         view.textColor = Resource.Color.red100
         return view
     }()
@@ -61,7 +62,7 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
     override func addSubviews() {
         super.addSubviews()
         
-        addSubviews([
+        contentView.addSubviews([
             thumbnavilImageView,
             couponButton,
             brandLabel,
@@ -74,19 +75,19 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
         super.configureConstraints()
         thumbnavilImageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(brandLabel.snp.top).offset(16)
+            $0.bottom.equalTo(brandLabel.snp.top).offset(-8)
         }
         couponButton.snp.makeConstraints {
             $0.leading.bottom.equalTo(thumbnavilImageView)
+            $0.width.equalTo(36)
         }
         brandLabel.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(priceLabel.snp.top).offset(8)
+            $0.bottom.equalTo(priceLabel.snp.top).offset(-4)
         }
         priceLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()
-            $0.trailing.equalTo(saleRateLabel.snp.leading)
         }
         saleRateLabel.snp.makeConstraints {
             $0.bottom.equalTo(priceLabel)
@@ -98,8 +99,8 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
         thumbnavilImageView.kf.setImage(with: goods.thumbnailURL)
         couponButton.isHidden = !goods.hasCoupon
         brandLabel.text = goods.brandName
-        let discountedPrice = (100 - goods.saleRate) % 100 * goods.price
-        priceLabel.text = discountedPrice.insertComma() + .common(.won)
+        let discountedPrice = Double(goods.saleRate) / Double(100) * Double(goods.price)
+        priceLabel.text = Int(discountedPrice).insertComma() + .common(.won)
         saleRateLabel.text = "\(goods.saleRate)" + .common(.percent)
     }
 }

@@ -12,7 +12,8 @@ import Kingfisher
 final class StyleCollectionViewCell: BaseCollectionViewCell {
     private let imageView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
         return view
     }()
     
@@ -24,7 +25,7 @@ final class StyleCollectionViewCell: BaseCollectionViewCell {
     override func addSubviews() {
         super.addSubviews()
         
-        addSubview(imageView)
+        contentView.addSubview(imageView)
     }
     
     override func configureConstraints() {

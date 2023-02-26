@@ -6,65 +6,66 @@
 //
 
 import UIKit
-import SnapKit
+import Resource
 
 final class BannerCollectionViewCell: BaseCollectionViewCell {
-    private var banners: [Banner]?
+    private let imageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleToFill
+        return view
+    }()
     
-    private lazy var scrollView: UIScrollView = {
-        let view = UIScrollView()
-        view.isPagingEnabled = true
-        view.delegate = self
-        view.bounces = false
+    private let titleLabel: UILabel = {
+        let view = UILabel()
+        view.textColor = Resource.Color.white
+        view.font = Resource.Font.header2
+        return view
+    }()
+    
+    private let subtitleLabel: UILabel = {
+        let view = UILabel()
+        view.textColor = Resource.Color.white
+        view.font = Resource.Font.title2
         return view
     }()
     
     override func addSubviews() {
         super.addSubviews()
-        addSubview(scrollView)
+
+        contentView.addSubviews([
+            imageView,
+            titleLabel,
+            subtitleLabel
+        ])
     }
-    
+
     override func configureConstraints() {
         super.configureConstraints()
-        scrollView.snp.makeConstraints {
+        
+        imageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        titleLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(subtitleLabel).inset(22)
+        }
+        subtitleLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(42)
         }
     }
     
-    func configure(banners: [Banner]) {
-        self.banners = banners
-        scrollView.contentSize.width = scrollView.frame.width * CGFloat(banners.count)
-        
-        for (i, banner) in banners.enumerated() {
-            let view = BannerParallaxView()
-            view.frame = CGRect(
-                x: scrollView.frame.width * CGFloat(i),
-                y: 0,
-                width: scrollView.frame.width,
-                height: scrollView.frame.height
-            )
-            view.configure(banner: banner)
-            view.tag = i + 10
-            scrollView.addSubview(view)
-        }
+    func configure(banner: Banner) {
+        imageView.kf.setImage(with: banner.thumbnailURL)
+        titleLabel.text = banner.title
+        subtitleLabel.text = banner.description
     }
-}
-
-// MARK: - UIScrollViewDelegate
-
-extension BannerCollectionViewCell: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let tempo = 200 / scrollView.frame.width
-        guard let banners = self.banners else { return }
-        for i in 0 ..< banners.count {
-            let parallaxView = scrollView.viewWithTag(i + 10) as! BannerParallaxView
-            let newX: CGFloat = tempo * (scrollView.contentOffset.x - CGFloat(i) * scrollView.frame.width)
-            parallaxView.imageView.frame = CGRect(
-                x: newX,
-                y: parallaxView.imageView.frame.origin.y,
-                width: parallaxView.imageView.frame.width,
-                height: parallaxView.imageView.frame.height
-            )
-        }
+    
+    func parallaxOffsetX(from contentOffset: CGPoint) {
+        let factor = 0.5
+        let newX = (contentOffset.x - self.frame.origin.x) * factor
+        let frame = imageView.bounds
+        let offsetFame = CGRectOffset(frame, CGFloat(newX), 0)
+        imageView.frame = offsetFame
     }
 }
