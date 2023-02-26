@@ -12,7 +12,7 @@ protocol Content: Decodable {
     var thumbnailURL: URL { get }
 }
 
-struct Contents: Decodable {
+struct Contents: Decodable, Equatable {
     enum `Type`: String, Decodable {
         case banner = "BANNER"
         case grid = "GRID"
@@ -42,5 +42,9 @@ struct Contents: Decodable {
         default:
             items = try container.decode([Goods].self, forKey: .goods)
         }
+    }
+    
+    static func == (lhs: Contents, rhs: Contents) -> Bool {
+        return lhs.type == rhs.type
     }
 }

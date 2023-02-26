@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Footer: Decodable {
+struct Footer: Decodable, Equatable {
     enum `Type`: String, Decodable {
         case refresh = "REFRESH"
         case more = "MORE"

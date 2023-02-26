@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Header: Decodable {
+struct Header: Decodable, Equatable {
     let title: String
     let iconURL: URL?
     let linkURL: URL?
