@@ -29,7 +29,7 @@ final class HeaderCollectionReusableView: BaseCollectionReusableView {
     
     private let allButton: UIButton = {
         let view = UIButton()
-        view.titleLabel?.font = Resource.Font.body1
+        view.titleLabel?.font = Resource.Font.title3
         view.setTitleColor(Resource.Color.gray400, for: .normal)
         view.setTitle(.common(.all), for: .normal)
         view.isHidden = true

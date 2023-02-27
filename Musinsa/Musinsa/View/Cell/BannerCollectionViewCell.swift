@@ -18,7 +18,7 @@ final class BannerCollectionViewCell: BaseCollectionViewCell {
     private let titleLabel: UILabel = {
         let view = UILabel()
         view.textColor = Resource.Color.white
-        view.font = Resource.Font.header2
+        view.font = Resource.Font.header1
         view.textAlignment = .center
         view.numberOfLines = 1
         return view
@@ -27,7 +27,7 @@ final class BannerCollectionViewCell: BaseCollectionViewCell {
     private let subtitleLabel: UILabel = {
         let view = UILabel()
         view.textColor = Resource.Color.white
-        view.font = Resource.Font.title2
+        view.font = Resource.Font.title3
         view.numberOfLines = 1
         view.textAlignment = .center
         return view

@@ -22,7 +22,7 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
         let view = UIButton()
         view.setTitle(.common(.coupon), for: .normal)
         view.setTitleColor(Resource.Color.white, for: .normal)
-        view.titleLabel?.font = .systemFont(ofSize: 10, weight: .regular)
+        view.titleLabel?.font = Resource.Font.body1
         view.backgroundColor = Resource.Color.blue100
         view.titleEdgeInsets = .init(top: 4, left: 9, bottom: 4, right: 9)
         view.isHidden = true
@@ -31,21 +31,21 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
     
     private let brandLabel: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 12, weight: .medium)
+        view.font = Resource.Font.subtitle1
         view.textColor = Resource.Color.gray400
         return view
     }()
     
     private let priceLabel: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 14, weight: .semibold)
+        view.font = Resource.Font.title3
         view.textColor = Resource.Color.black
         return view
     }()
     
     private let saleRateLabel: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 14, weight: .semibold)
+        view.font = Resource.Font.title3
         view.textColor = Resource.Color.red100
         return view
     }()

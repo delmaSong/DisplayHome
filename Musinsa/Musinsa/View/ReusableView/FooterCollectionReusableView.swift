@@ -18,7 +18,7 @@ final class FooterCollectionReusableView: BaseCollectionReusableView {
             borderWidth: 1,
             borderColor: Resource.Color.gray100
         )
-        view.titleLabel?.font = Resource.Font.title1
+        view.titleLabel?.font = Resource.Font.title3
         view.setTitleColor(Resource.Color.black, for: .normal)
         view.backgroundColor = Resource.Color.white
         view.imageView?.contentMode = .scaleAspectFit
