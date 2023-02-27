@@ -409,28 +409,43 @@ extension HomeViewController {
     }
     
     private func configureCollectionViewSupplementaryView() {
-        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+        dataSource.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath in
+            guard let self else { return UICollectionReusableView() }
+            
+            var displaySection: DisplaySection?
+            self.reactor?.state
+                .map { $0.sections[safe: indexPath.section] }
+                .subscribe { displaySection = $0 }
+                .disposed(by: self.disposeBag)
+            
             switch kind {
             case HeaderCollectionReusableView.identifier:
-                guard let header = collectionView.dequeueReusableSupplementaryView(
+                guard let headerView = collectionView.dequeueReusableSupplementaryView(
                     ofKind: kind,
                     withReuseIdentifier: HeaderCollectionReusableView.identifier,
                     for: indexPath
                 ) as? HeaderCollectionReusableView else {
                     return UICollectionReusableView()
                 }
-                // TODO: - header에 데이터 전달 필요
-                return header
+                if let header = displaySection?.header {
+                    headerView.configure(header: header)
+                }
+                return headerView
+                
             case FooterCollectionReusableView.identifier:
-                guard let footer = collectionView.dequeueReusableSupplementaryView(
+                guard let footerView = collectionView.dequeueReusableSupplementaryView(
                     ofKind: kind,
                     withReuseIdentifier: FooterCollectionReusableView.identifier,
                     for: indexPath
                 ) as? FooterCollectionReusableView else {
                     return UICollectionReusableView()
                 }
-                // TODO: - footer에 데이터 전달 필요
-                return footer
+                
+                if let footer = displaySection?.footer {
+                    footerView.configure(footer: footer)
+                }
+                return footerView
+
             default:
                 return UICollectionReusableView()
             }
