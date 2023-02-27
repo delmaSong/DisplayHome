@@ -102,17 +102,15 @@ final class HomeViewReactor: Reactor {
         case .append(let type):
             switch type {
             case .grid:
-                let currentCount = state.gridGoods.count
                 let displayedCount = min(
                     state.gridGoods.count + gridAppendCount,
                     state.originGoods.count
                 )
-                let newGoods = Array(state.originGoods[currentCount..<displayedCount])
-                newState.gridGoods.append(contentsOf: newGoods)
+                newState.gridGoods = Array(state.originGoods[0..<displayedCount])
 
             case .style:
                 let displayedCount = min(
-                    state.styles.count + gridAppendCount,
+                    state.styles.count + styleAppendCount,
                     state.originStyles.count
                 )
                 newState.styles = Array(state.originStyles[0..<displayedCount])

@@ -142,6 +142,8 @@ final class HomeViewController: BaseViewController, ReactorKit.View {
             .distinctUntilChanged()
             .drive { [weak self] styles in
                 let styleItems = styles.map { HomeItem(type: .style($0)) }
+                let items = snapshot.itemIdentifiers(inSection: .style)
+                snapshot.deleteItems(items)
                 snapshot.appendItems(styleItems, toSection: .style)
                 self?.dataSource.apply(snapshot)
             }.disposed(by: disposeBag)
