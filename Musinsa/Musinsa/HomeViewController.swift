@@ -142,18 +142,24 @@ final class HomeViewController: BaseViewController, ReactorKit.View {
 
 extension HomeViewController {
     private func generateCollectionViewLayout() -> UICollectionViewLayout {
-        return UICollectionViewCompositionalLayout { [unowned self] sectionIndex, _ in
-            switch HomeSection.allCases[sectionIndex] {
-            case .banner:
-                return self.bannerSectionLayout(at: sectionIndex)
-            case .grid:
-                return self.gridSectionLayout(at: sectionIndex)
-            case .scroll:
-                return self.scrollSectionLayout(at: sectionIndex)
-            case .style:
-                return self.styleSectionLayout(at: sectionIndex)
-            }
-        }
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.interSectionSpacing = 30
+        
+        return UICollectionViewCompositionalLayout(
+            sectionProvider: { [unowned self] sectionIndex, _ in
+                switch HomeSection.allCases[sectionIndex] {
+                case .banner:
+                    return self.bannerSectionLayout(at: sectionIndex)
+                case .grid:
+                    return self.gridSectionLayout(at: sectionIndex)
+                case .scroll:
+                    return self.scrollSectionLayout(at: sectionIndex)
+                case .style:
+                    return self.styleSectionLayout(at: sectionIndex)
+                }
+            },
+            configuration: configuration
+        )
     }
     
     private func bannerSectionLayout(at index: Int) -> NSCollectionLayoutSection {

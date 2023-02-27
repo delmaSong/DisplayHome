@@ -42,7 +42,7 @@ final class FooterCollectionReusableView: BaseCollectionReusableView {
         
         button.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(18)
+            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(48)
         }
     }

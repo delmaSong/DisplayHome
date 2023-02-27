@@ -56,7 +56,7 @@ final class HeaderCollectionReusableView: BaseCollectionReusableView {
         
         titleLabel.snp.makeConstraints {
             $0.top.bottom.equalToSuperview().inset(16)
-            $0.leading.equalToSuperview().offset(22)
+            $0.leading.equalToSuperview().offset(12)
             $0.trailing.greaterThanOrEqualTo(iconImageView.snp.leading).offset(-8)
             $0.trailing.lessThanOrEqualTo(iconImageView.snp.leading).offset(-2)
         }
@@ -67,7 +67,7 @@ final class HeaderCollectionReusableView: BaseCollectionReusableView {
         }
         allButton.snp.makeConstraints {
             $0.leading.greaterThanOrEqualTo(iconImageView.snp.trailing).offset(2)
-            $0.trailing.equalToSuperview().inset(22)
+            $0.trailing.equalToSuperview().inset(12)
             $0.centerY.equalToSuperview()
         }
     }
