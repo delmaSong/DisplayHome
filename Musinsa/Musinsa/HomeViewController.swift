@@ -106,39 +106,44 @@ final class HomeViewController: BaseViewController, ReactorKit.View {
     }
     
     func bind(reactor: HomeViewReactor) {
-        reactor.state.map { $0.sections }
+        var snapshot = self.dataSource.snapshot()
+        
+        reactor.state.map { $0.banners }
             .asDriver(onErrorJustReturn: [])
             .distinctUntilChanged()
-            .drive { [weak self] sections in
-                guard let self else { return }
-                
-                var snapshot = self.dataSource.snapshot()
-                sections.forEach { section in
-                    guard let type = section.contents?.type else { return }
-                    switch type {
-                    case .banner:
-                        guard let banners = section.contents?.items as? [Banner] else { return }
-                        let bannerItems = banners.map { HomeItem(type: .banner($0)) }
-                        snapshot.appendItems(bannerItems, toSection: .banner)
-                        
-                    case .scroll:
-                        guard let goods = section.contents?.items as? [Goods] else { return }
-                        let goodsItems = goods.map { HomeItem(type: .scroll($0)) }
-                        snapshot.appendItems(goodsItems, toSection: .scroll)
-                        
-                    case .grid:
-                        guard let goods = section.contents?.items as? [Goods] else { return }
-                        let goodsItems = goods.map { HomeItem(type: .grid($0)) }
-                        snapshot.appendItems(goodsItems, toSection: .grid)
-                        
-                    case .style:
-                        guard let styles = section.contents?.items as? [Style] else { return }
-                        let styleItems = styles.map { HomeItem(type: .style($0)) }
-                        snapshot.appendItems(styleItems, toSection: .style)
-                    }
-                }
-                
-                self.dataSource.apply(snapshot)
+            .drive { [weak self] banners in
+                let bannerItems = banners.map { HomeItem(type: .banner($0)) }
+                snapshot.appendItems(bannerItems, toSection: .banner)
+                self?.dataSource.apply(snapshot)
+            }.disposed(by: disposeBag)
+        
+        reactor.state.map { $0.scrollGoods }
+            .asDriver(onErrorJustReturn: [])
+            .distinctUntilChanged()
+            .drive { [weak self] goods in
+                let goodsItems = goods.map { HomeItem(type: .scroll($0)) }
+                snapshot.appendItems(goodsItems, toSection: .scroll)
+                self?.dataSource.apply(snapshot)
+            }.disposed(by: disposeBag)
+        
+        reactor.state.map { $0.gridGoods }
+            .asDriver(onErrorJustReturn: [])
+            .distinctUntilChanged()
+            .drive { [weak self] goods in
+                let goodsItems = goods.map { HomeItem(type: .grid($0)) }
+                let items = snapshot.itemIdentifiers(inSection: .grid)
+                snapshot.deleteItems(items)
+                snapshot.appendItems(goodsItems, toSection: .grid)
+                self?.dataSource.apply(snapshot)
+            }.disposed(by: disposeBag)
+        
+        reactor.state.map { $0.styles }
+            .asDriver(onErrorJustReturn: [])
+            .distinctUntilChanged()
+            .drive { [weak self] styles in
+                let styleItems = styles.map { HomeItem(type: .style($0)) }
+                snapshot.appendItems(styleItems, toSection: .style)
+                self?.dataSource.apply(snapshot)
             }.disposed(by: disposeBag)
     }
 }
@@ -478,10 +483,7 @@ extension HomeViewController {
                 ) as? FooterCollectionReusableView else {
                     return UICollectionReusableView()
                 }
-                
-                if let footer = displaySection?.footer {
-                    footerView.configure(footer: footer)
-                }
+                footerView.configure(reactor: self.reactor, section: displaySection)
                 return footerView
 
             default:

@@ -9,8 +9,11 @@ import UIKit
 import Resource
 import SnapKit
 import Kingfisher
+import ReactorKit
 
 final class FooterCollectionReusableView: BaseCollectionReusableView {
+    private var disposeBag = DisposeBag()
+    
     private let button: UIButton = {
         let view = UIButton()
         view.setRounded(
@@ -31,6 +34,11 @@ final class FooterCollectionReusableView: BaseCollectionReusableView {
         return view
     }()
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
     override func addSubviews() {
         super.addSubviews()
         
@@ -47,7 +55,11 @@ final class FooterCollectionReusableView: BaseCollectionReusableView {
         }
     }
     
-    func configure(footer: Footer) {
+    func configure(reactor: HomeViewReactor?, section: DisplaySection?) {
+        guard let footer = section?.footer,
+              let type = section?.contents?.type
+        else { return }
+        
         let title: String = footer.type == .refresh ? .common(.newRecommend) : .common(.more)
         button.setTitle(title, for: .normal)
         if let iconURL = footer.iconURL {
@@ -59,5 +71,14 @@ final class FooterCollectionReusableView: BaseCollectionReusableView {
                 right: .zero
             )
         }
+        
+        button.rx.tap
+            .asDriver()
+            .drive { _ in
+                if footer.type == .more {
+                    reactor?.action.onNext(.loadMore(type))
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }
