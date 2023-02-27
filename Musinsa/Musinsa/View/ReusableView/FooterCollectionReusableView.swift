@@ -21,11 +21,12 @@ final class FooterCollectionReusableView: BaseCollectionReusableView {
         view.titleLabel?.font = Resource.Font.title1
         view.setTitleColor(Resource.Color.black, for: .normal)
         view.backgroundColor = Resource.Color.white
-        view.titleEdgeInsets = .init(
-            top: .zero,
-            left: 8,
-            bottom: .zero,
-            right: .zero
+        view.imageView?.contentMode = .scaleAspectFit
+        view.imageEdgeInsets = UIEdgeInsets(
+            top: 12,
+            left: 0,
+            bottom: 12,
+            right: 0
         )
         return view
     }()
@@ -42,6 +43,7 @@ final class FooterCollectionReusableView: BaseCollectionReusableView {
         button.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(18)
+            $0.height.equalTo(48)
         }
     }
     
@@ -50,6 +52,12 @@ final class FooterCollectionReusableView: BaseCollectionReusableView {
         button.setTitle(title, for: .normal)
         if let iconURL = footer.iconURL {
             button.kf.setImage(with: iconURL, for: .normal)
+            button.titleEdgeInsets = .init(
+                top: .zero,
+                left: -36,
+                bottom: .zero,
+                right: .zero
+            )
         }
     }
 }
