@@ -145,18 +145,18 @@ extension HomeViewController {
         return UICollectionViewCompositionalLayout { [unowned self] sectionIndex, _ in
             switch HomeSection.allCases[sectionIndex] {
             case .banner:
-                return self.bannerSectionLayout()
+                return self.bannerSectionLayout(at: sectionIndex)
             case .grid:
-                return self.gridSectionLayout()
+                return self.gridSectionLayout(at: sectionIndex)
             case .scroll:
-                return self.scrollSectionLayout()
+                return self.scrollSectionLayout(at: sectionIndex)
             case .style:
-                return self.styleSectionLayout()
+                return self.styleSectionLayout(at: sectionIndex)
             }
         }
     }
     
-    private func bannerSectionLayout() -> NSCollectionLayoutSection {
+    private func bannerSectionLayout(at index: Int) -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
             heightDimension: .fractionalHeight(1.2)
@@ -175,6 +175,7 @@ extension HomeViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .paging
+        addSupplementaryItem(at: section, sectionIndex: index)
         section.visibleItemsInvalidationHandler = { [weak self] visibleItems, contentOffset, _ in
             guard let self,
                   let currentIndexPath = visibleItems.last?.indexPath,
@@ -187,7 +188,7 @@ extension HomeViewController {
         return section
     }
     
-    private func gridSectionLayout() -> NSCollectionLayoutSection {
+    private func gridSectionLayout(at index: Int) -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.3),
             heightDimension: .fractionalHeight(1)
@@ -207,10 +208,11 @@ extension HomeViewController {
 
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 22, leading: 12, bottom: 22, trailing: 12)
+        addSupplementaryItem(at: section, sectionIndex: index)
         return section
     }
     
-    private func scrollSectionLayout() -> NSCollectionLayoutSection {
+    private func scrollSectionLayout(at index: Int) -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.3),
             heightDimension: .fractionalHeight(1)
@@ -231,10 +233,11 @@ extension HomeViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 22, leading: 12, bottom: 22, trailing: 12)
         section.orthogonalScrollingBehavior = .continuous
+        addSupplementaryItem(at: section, sectionIndex: index)
         return section
     }
 
-    private func styleSectionLayout() -> NSCollectionLayoutSection {
+    private func styleSectionLayout(at index: Int) -> NSCollectionLayoutSection {
         let defaultInsets = NSDirectionalEdgeInsets(
             top: 2,
             leading: 2,
@@ -299,7 +302,54 @@ extension HomeViewController {
 
         let section = NSCollectionLayoutSection(group: nestedGroup)
         section.contentInsets = .init(top: 0, leading: 12, bottom: 0, trailing: 12)
+        addSupplementaryItem(at: section, sectionIndex: index)
         return section
+    }
+    
+    private func configureHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(60)
+        )
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: HeaderCollectionReusableView.identifier,
+            alignment: .top
+        )
+        return sectionHeader
+    }
+    
+    private func configureFooter() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let footerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(60)
+        )
+        let sectionFooter = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: footerSize,
+            elementKind: FooterCollectionReusableView.identifier,
+            alignment: .bottom
+        )
+        return sectionFooter
+    }
+    
+    private func addSupplementaryItem(
+        at section: NSCollectionLayoutSection,
+        sectionIndex: Int
+    ) {
+        reactor?.state.compactMap { $0.sections[safe: sectionIndex] }
+            .subscribe(onNext: { [weak self] in
+                guard let self else { return }
+                if $0.header != nil {
+                    let header = self.configureHeader()
+                    section.boundarySupplementaryItems.append(header)
+                }
+                
+                if $0.footer != nil {
+                    let footer = self.configureFooter()
+                    section.boundarySupplementaryItems.append(footer)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
