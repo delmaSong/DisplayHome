@@ -76,6 +76,8 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
         thumbnavilImageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(brandLabel.snp.top).offset(-8)
+            $0.width.lessThanOrEqualTo(UIScreen.main.bounds.width / 3)
+            $0.height.lessThanOrEqualTo(150)
         }
         couponButton.snp.makeConstraints {
             $0.leading.bottom.equalTo(thumbnavilImageView)
