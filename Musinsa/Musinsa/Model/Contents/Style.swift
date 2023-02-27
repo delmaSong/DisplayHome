@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Style: Content {
+struct Style: Content, Equatable {
     let linkURL: URL
     let thumbnailURL: URL
 }

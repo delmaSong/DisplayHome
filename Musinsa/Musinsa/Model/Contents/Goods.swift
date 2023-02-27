@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Goods: Content {
+struct Goods: Content, Equatable {
     let linkURL: URL
     let thumbnailURL: URL
     let brandName: String

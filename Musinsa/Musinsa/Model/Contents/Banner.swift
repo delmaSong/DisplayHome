@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Banner: Content {
+struct Banner: Content, Equatable {
     let linkURL: URL
     let thumbnailURL: URL
     let title: String
