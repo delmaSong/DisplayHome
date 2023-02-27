@@ -16,6 +16,7 @@ final class HeaderCollectionReusableView: BaseCollectionReusableView {
         let view = UILabel()
         view.font = Resource.Font.header2
         view.textColor = Resource.Color.black
+        view.numberOfLines = 1
         return view
     }()
     
@@ -29,7 +30,8 @@ final class HeaderCollectionReusableView: BaseCollectionReusableView {
     private let allButton: UIButton = {
         let view = UIButton()
         view.titleLabel?.font = Resource.Font.body1
-        view.setTitleColor(Resource.Color.gray100, for: .normal)
+        view.setTitleColor(Resource.Color.gray400, for: .normal)
+        view.setTitle(.common(.all), for: .normal)
         view.isHidden = true
         return view
     }()
@@ -55,15 +57,18 @@ final class HeaderCollectionReusableView: BaseCollectionReusableView {
         titleLabel.snp.makeConstraints {
             $0.top.bottom.equalToSuperview().inset(16)
             $0.leading.equalToSuperview().offset(22)
+            $0.trailing.greaterThanOrEqualTo(iconImageView.snp.leading).offset(-8)
+            $0.trailing.lessThanOrEqualTo(iconImageView.snp.leading).offset(-2)
         }
         iconImageView.snp.makeConstraints {
-            $0.top.bottom.equalTo(titleLabel)
-            $0.leading.equalTo(titleLabel.snp.trailing).offset(8)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(16)
             $0.height.equalTo(iconImageView.snp.width)
         }
         allButton.snp.makeConstraints {
+            $0.leading.greaterThanOrEqualTo(iconImageView.snp.trailing).offset(2)
             $0.trailing.equalToSuperview().inset(22)
-            $0.top.bottom.equalTo(iconImageView)
+            $0.centerY.equalToSuperview()
         }
     }
     
