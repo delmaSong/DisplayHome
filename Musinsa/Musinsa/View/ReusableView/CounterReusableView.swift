@@ -7,8 +7,11 @@
 
 import UIKit
 import Resource
+import ReactorKit
 
 final class CounterReusableView: BaseCollectionViewCell {
+    private let disposeBag = DisposeBag()
+    
     private let pagingBackgroundView: UIView = {
        let view = UIView()
         view.backgroundColor = Resource.Color.black.withAlphaComponent(0.5)
@@ -19,7 +22,6 @@ final class CounterReusableView: BaseCollectionViewCell {
        let view = UILabel()
         view.textColor = Resource.Color.white
         view.font = Resource.Font.subtitle1
-        view.text = "1 / 10"
         return view
     }()
     
@@ -39,8 +41,14 @@ final class CounterReusableView: BaseCollectionViewCell {
             $0.edges.equalToSuperview()
         }
         pagingLabel.snp.makeConstraints {
-            $0.leading.trailing.equalTo(pagingBackgroundView).inset(12)
-            $0.top.equalTo(pagingBackgroundView).inset(6)
+            $0.center.equalTo(pagingBackgroundView)
         }
+    }
+    
+    func configure(reactor: HomeViewReactor?) {
+        reactor?.state.subscribe(onNext: { [weak self] state in
+            self?.pagingLabel.text = "\(state.currentBannerPage) / \(state.bannersCount)"
+        })
+        .disposed(by: disposeBag)
     }
 }

@@ -185,7 +185,7 @@ extension HomeViewController {
         )
         
         let counterSize = NSCollectionLayoutSize(
-            widthDimension: .estimated(60),
+            widthDimension: .absolute(60),
             heightDimension: .estimated(30)
         )
         let counterAnchor = NSCollectionLayoutAnchor(
@@ -210,6 +210,7 @@ extension HomeViewController {
                   ) as? BannerCollectionViewCell
             else { return }
             cell.parallaxOffsetX(from: contentOffset)
+            self.reactor?.action.onNext(.turnPage(currentIndexPath.item + 1))
         }
         return section
     }
@@ -453,6 +454,7 @@ extension HomeViewController {
                 ) as? CounterReusableView else {
                     return UICollectionReusableView()
                 }
+                counterView.configure(reactor: self.reactor)
                 return counterView
                 
             case HeaderCollectionReusableView.identifier:
