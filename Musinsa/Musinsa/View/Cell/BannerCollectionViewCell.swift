@@ -19,6 +19,8 @@ final class BannerCollectionViewCell: BaseCollectionViewCell {
         let view = UILabel()
         view.textColor = Resource.Color.white
         view.font = Resource.Font.header2
+        view.textAlignment = .center
+        view.numberOfLines = 1
         return view
     }()
     
@@ -26,6 +28,8 @@ final class BannerCollectionViewCell: BaseCollectionViewCell {
         let view = UILabel()
         view.textColor = Resource.Color.white
         view.font = Resource.Font.title2
+        view.numberOfLines = 1
+        view.textAlignment = .center
         return view
     }()
     
@@ -46,12 +50,16 @@ final class BannerCollectionViewCell: BaseCollectionViewCell {
             $0.edges.equalToSuperview()
         }
         titleLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
+            $0.centerX.equalToSuperview().priority(.high)
             $0.bottom.equalTo(subtitleLabel).inset(22)
+            $0.leading.greaterThanOrEqualToSuperview()
+            $0.trailing.lessThanOrEqualToSuperview()
         }
         subtitleLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
+            $0.centerX.equalToSuperview().priority(.high)
             $0.bottom.equalToSuperview().inset(42)
+            $0.leading.greaterThanOrEqualToSuperview()
+            $0.trailing.lessThanOrEqualToSuperview()
         }
     }
     
