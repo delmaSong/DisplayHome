@@ -51,6 +51,11 @@ final class HomeViewController: BaseViewController, ReactorKit.View {
             collectionViewLayout: self.generateCollectionViewLayout()
         )
         view.register(
+            CounterReusableView.self,
+            forSupplementaryViewOfKind: CounterReusableView.identifier,
+            withReuseIdentifier: CounterReusableView.identifier
+        )
+        view.register(
             HeaderCollectionReusableView.self,
             forSupplementaryViewOfKind: HeaderCollectionReusableView.identifier,
             withReuseIdentifier: HeaderCollectionReusableView.identifier
@@ -179,8 +184,23 @@ extension HomeViewController {
             subitems: [item]
         )
         
+        let counterSize = NSCollectionLayoutSize(
+            widthDimension: .estimated(60),
+            heightDimension: .estimated(30)
+        )
+        let counterAnchor = NSCollectionLayoutAnchor(
+            edges: [.bottom, .trailing],
+            absoluteOffset: CGPoint(x: 0, y: 0)
+        )
+        let counterItem = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: counterSize,
+            elementKind: CounterReusableView.identifier,
+            containerAnchor: counterAnchor
+        )
+        
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .paging
+        section.boundarySupplementaryItems.append(counterItem)
         addSupplementaryItem(at: section, sectionIndex: index)
         section.visibleItemsInvalidationHandler = { [weak self] visibleItems, contentOffset, _ in
             guard let self,
@@ -425,6 +445,16 @@ extension HomeViewController {
                 .disposed(by: self.disposeBag)
             
             switch kind {
+            case CounterReusableView.identifier:
+                guard let counterView = collectionView.dequeueReusableSupplementaryView(
+                    ofKind: kind,
+                    withReuseIdentifier: CounterReusableView.identifier,
+                    for: indexPath
+                ) as? CounterReusableView else {
+                    return UICollectionReusableView()
+                }
+                return counterView
+                
             case HeaderCollectionReusableView.identifier:
                 guard let headerView = collectionView.dequeueReusableSupplementaryView(
                     ofKind: kind,
