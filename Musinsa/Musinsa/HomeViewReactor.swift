@@ -30,7 +30,7 @@ final class HomeViewReactor: Reactor {
         var currentBannerPage: Int = 1
         var bannersCount: Int = 0
 
-        var originGoods: [Goods] = []
+        var originGridGoods: [Goods] = []
         var originStyles: [Style] = []
     }
     
@@ -81,7 +81,7 @@ final class HomeViewReactor: Reactor {
                     let appendedCount = state.gridGoods.count + gridAppendCount
                     let maxCount = appendedCount < defaultDisplayCount ? defaultDisplayCount : appendedCount
                     let displayedCount = min(maxCount, goods.count)
-                    newState.originGoods = goods
+                    newState.originGridGoods = goods
                     newState.gridGoods = Array(goods[0..<displayedCount])
                     
                 case .style:
@@ -104,9 +104,9 @@ final class HomeViewReactor: Reactor {
             case .grid:
                 let displayedCount = min(
                     state.gridGoods.count + gridAppendCount,
-                    state.originGoods.count
+                    state.originGridGoods.count
                 )
-                newState.gridGoods = Array(state.originGoods[0..<displayedCount])
+                newState.gridGoods = Array(state.originGridGoods[0..<displayedCount])
 
             case .style:
                 let displayedCount = min(

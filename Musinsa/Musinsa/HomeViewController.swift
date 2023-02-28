@@ -376,7 +376,7 @@ extension HomeViewController {
             $0.styles.count == $0.originStyles.count
         }
         let gridGoodsObservable = reactor.state.map {
-            $0.gridGoods.count == $0.originGoods.count
+            $0.gridGoods.count == $0.originGridGoods.count
         }
         
         Observable.combineLatest(
