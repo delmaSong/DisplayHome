@@ -36,26 +36,22 @@ final class HeaderCollectionReusableView: BaseCollectionReusableView {
         return view
     }()
     
-    override func configure() {
-        super.configure()
-        
-//        allButton.rx.tap
-//            .bind {
-//                // TODO: - 전체 화면으로 이동처리
-//            }
-//            .disposed(by: <#T##DisposeBag#>)
-    }
+    private let divider: UIView = {
+        let view = UIView()
+        view.backgroundColor = Resource.Color.gray100
+        return view
+    }()
     
     override func addSubviews() {
         super.addSubviews()
-        addSubviews([titleLabel, iconImageView, allButton])
+        addSubviews([titleLabel, iconImageView, allButton, divider])
     }
     
     override func configureConstraints() {
         super.configureConstraints()
         
         titleLabel.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview().inset(16)
+            $0.top.bottom.equalToSuperview().inset(8)
             $0.leading.equalToSuperview().offset(12)
             $0.trailing.greaterThanOrEqualTo(iconImageView.snp.leading).offset(-8)
             $0.trailing.lessThanOrEqualTo(iconImageView.snp.leading).offset(-2)
@@ -69,6 +65,11 @@ final class HeaderCollectionReusableView: BaseCollectionReusableView {
             $0.leading.greaterThanOrEqualTo(iconImageView.snp.trailing).offset(2)
             $0.trailing.equalToSuperview().inset(12)
             $0.centerY.equalToSuperview()
+        }
+        divider.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(12)
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(1)
         }
     }
     
