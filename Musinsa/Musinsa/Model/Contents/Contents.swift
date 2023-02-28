@@ -10,6 +10,14 @@ import Foundation
 protocol Content: Decodable {
     var linkURL: URL { get }
     var thumbnailURL: URL { get }
+    
+    func isEqual(to: Content) -> Bool
+}
+
+extension Content {
+    func isEqual(to: Content) -> Bool {
+        return self.linkURL == to.linkURL && self.thumbnailURL == to.thumbnailURL
+    }
 }
 
 struct Contents: Decodable, Equatable {
@@ -45,6 +53,17 @@ struct Contents: Decodable, Equatable {
     }
     
     static func == (lhs: Contents, rhs: Contents) -> Bool {
-        return lhs.type == rhs.type
+        return lhs.type == rhs.type && isEqual(lhs: lhs, rhs: rhs)
+    }
+    
+    static func isEqual(lhs: Contents, rhs: Contents) -> Bool {
+        if lhs.type != rhs.type { return false }
+        
+        for i in 0..<lhs.items.count {
+            if !lhs.items[i].isEqual(to: rhs.items[i]) {
+                return false
+            }
+        }
+        return true
     }
 }
