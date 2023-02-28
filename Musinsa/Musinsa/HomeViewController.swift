@@ -122,6 +122,8 @@ final class HomeViewController: BaseViewController, ReactorKit.View {
             .distinctUntilChanged()
             .drive { [weak self] goods in
                 let goodsItems = goods.map { HomeItem(type: .scroll($0)) }
+                let items = snapshot.itemIdentifiers(inSection: .scroll)
+                snapshot.deleteItems(items)
                 snapshot.appendItems(goodsItems, toSection: .scroll)
                 self?.dataSource.apply(snapshot)
             }.disposed(by: disposeBag)

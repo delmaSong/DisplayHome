@@ -57,7 +57,7 @@ final class FooterCollectionReusableView: BaseCollectionReusableView {
     
     func configure(reactor: HomeViewReactor?, section: DisplaySection?) {
         guard let footer = section?.footer,
-              let type = section?.contents?.type
+              let contentsType = section?.contents?.type
         else { return }
         
         let title: String = footer.type == .refresh ? .common(.newRecommend) : .common(.more)
@@ -76,7 +76,9 @@ final class FooterCollectionReusableView: BaseCollectionReusableView {
             .asDriver()
             .drive { _ in
                 if footer.type == .more {
-                    reactor?.action.onNext(.loadMore(type))
+                    reactor?.action.onNext(.loadMore(contentsType))
+                } else if footer.type == .refresh {
+                    reactor?.action.onNext(.newRecommend(contentsType))
                 }
             }
             .disposed(by: disposeBag)

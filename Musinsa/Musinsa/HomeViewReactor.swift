@@ -12,12 +12,14 @@ final class HomeViewReactor: Reactor {
         case refresh
         case turnPage(Int)
         case loadMore(Contents.`Type`)
+        case newRecommend(Contents.`Type`)
     }
     
     enum Mutation {
         case replace([DisplaySection])
         case turnPage(Int)
         case append(Contents.`Type`)
+        case shuffle(Contents.`Type`)
     }
     
     struct State {
@@ -56,6 +58,9 @@ final class HomeViewReactor: Reactor {
             
         case .loadMore(let type):
             return .just(.append(type))
+            
+        case .newRecommend(let type):
+            return .just(.shuffle(type))
         }
     }
     
@@ -114,6 +119,14 @@ final class HomeViewReactor: Reactor {
                     state.originStyles.count
                 )
                 newState.styles = Array(state.originStyles[0..<displayedCount])
+                
+            default: break
+            }
+            
+        case .shuffle(let type):
+            switch type {
+            case .scroll:
+                newState.scrollGoods.shuffle()
                 
             default: break
             }
