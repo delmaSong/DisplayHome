@@ -393,11 +393,23 @@ extension HomeViewController {
                 }
                 
                 if display.footer != nil {
-                    if (display.contents?.type == .style && !doneStyleLoad) ||
-                        (display.contents?.type == .grid && !doneGridGoodsLoad) {
-                        let footer = self.configureFooter()
-                        section.boundarySupplementaryItems.append(footer)
+                    switch display.contents?.type {
+                    case .style:
+                        if !doneStyleLoad {
+                            addFooter()
+                        }
+                    case .grid:
+                        if !doneGridGoodsLoad {
+                            addFooter()
+                        }
+                    default:
+                        addFooter()
                     }
+                }
+                
+                func addFooter() {
+                    let footer = self.configureFooter()
+                    section.boundarySupplementaryItems.append(footer)
                 }
             })
             .disposed(by: disposeBag)
