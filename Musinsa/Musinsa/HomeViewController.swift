@@ -91,7 +91,7 @@ final class HomeViewController: BaseViewController, ReactorKit.View {
         makeSnapshot()
         
         self.reactor = HomeViewReactor()
-        reactor?.action.onNext(.refresh)
+        reactor?.action.onNext(.load)
         
         startTimer()
     }

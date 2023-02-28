@@ -9,7 +9,7 @@ import ReactorKit
 
 final class HomeViewReactor: Reactor {
     enum Action {
-        case refresh
+        case load
         case turnPageAutoScroll
         case turnPage(Int)
         case loadMore(Contents.`Type`)
@@ -51,7 +51,7 @@ final class HomeViewReactor: Reactor {
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .refresh:
+        case .load:
             return useCase.fetchList()
                 .compactMap { .replace($0.data) }
             
