@@ -308,7 +308,7 @@ extension HomeViewController {
         )
 
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 22, leading: 12, bottom: 22, trailing: 12)
+        section.contentInsets = .init(top: 0, leading: 12, bottom: 22, trailing: 12)
         section.orthogonalScrollingBehavior = .continuous
         addSupplementaryItem(at: section, sectionIndex: index)
         return section
@@ -378,7 +378,7 @@ extension HomeViewController {
         )
 
         let section = NSCollectionLayoutSection(group: nestedGroup)
-        section.contentInsets = .init(top: 0, leading: 12, bottom: 0, trailing: 12)
+        section.contentInsets = .init(top: 0, leading: 12, bottom: 22, trailing: 12)
         addSupplementaryItem(at: section, sectionIndex: index)
         return section
     }
