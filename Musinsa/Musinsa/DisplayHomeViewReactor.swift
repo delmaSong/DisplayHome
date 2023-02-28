@@ -1,5 +1,5 @@
 //
-//  HomeViewReactor.swift
+//  DisplayHomeViewReactor.swift
 //  Musinsa
 //
 //  Created by Delma Song on 2023/02/25.
@@ -7,7 +7,7 @@
 
 import ReactorKit
 
-final class HomeViewReactor: Reactor {
+final class DisplayHomeViewReactor: Reactor {
     enum Action {
         case load
         case turnPageAutoScroll
@@ -39,7 +39,7 @@ final class HomeViewReactor: Reactor {
     }
     
     var initialState: State
-    var useCase = DisplayServiceUseCase()
+    var dispatcher = DisplayServiceDispatcher()
     
     private let defaultDisplayCount = 6
     private let gridAppendCount = 3
@@ -52,7 +52,7 @@ final class HomeViewReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
-            return useCase.fetchList()
+            return dispatcher.fetchList()
                 .compactMap { .replace($0.data) }
             
         case .turnPageAutoScroll:

@@ -55,7 +55,7 @@ final class FooterCollectionReusableView: BaseCollectionReusableView {
         }
     }
     
-    func configure(reactor: HomeViewReactor?, section: DisplaySection?) {
+    func configure(reactor: DisplayHomeViewReactor?, section: DisplaySection?) {
         guard let footer = section?.footer,
               let contentsType = section?.contents?.type
         else { return }

@@ -1,5 +1,5 @@
 //
-//  DisplayServiceUseCase.swift
+//  DisplayServiceDispatcher.swift
 //  Musinsa
 //
 //  Created by Delma Song on 2023/02/22.
@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-final class DisplayServiceUseCase {
+final class DisplayServiceDispatcher {
     
     typealias router = DisplayServiceRouter
     

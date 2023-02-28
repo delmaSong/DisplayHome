@@ -45,7 +45,7 @@ final class CounterReusableView: BaseCollectionViewCell {
         }
     }
     
-    func configure(reactor: HomeViewReactor?) {
+    func configure(reactor: DisplayHomeViewReactor?) {
         reactor?.state.subscribe(onNext: { [weak self] state in
             self?.pagingLabel.text = "\(state.currentBannerPage) / \(state.bannersCount)"
         })

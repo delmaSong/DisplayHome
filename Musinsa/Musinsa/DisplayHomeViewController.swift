@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  DisplayHomeViewController.swift
 //  Musinsa
 //
 //  Created by Delma Song on 2023/02/22.
@@ -38,8 +38,8 @@ struct HomeItem: Hashable {
     }
 }
 
-final class HomeViewController: BaseViewController, ReactorKit.View {
-    typealias Reactor = HomeViewReactor
+final class DisplayHomeViewController: BaseViewController, ReactorKit.View {
+    typealias Reactor = DisplayHomeViewReactor
     typealias DataSource = UICollectionViewDiffableDataSource<HomeSection, HomeItem>
     
     private var dataSource: DataSource!
@@ -90,7 +90,7 @@ final class HomeViewController: BaseViewController, ReactorKit.View {
         configureCollectionViewSupplementaryView()
         makeSnapshot()
         
-        self.reactor = HomeViewReactor()
+        self.reactor = DisplayHomeViewReactor()
         reactor?.action.onNext(.load)
         
         startTimer()
@@ -110,7 +110,7 @@ final class HomeViewController: BaseViewController, ReactorKit.View {
         }
     }
     
-    func bind(reactor: HomeViewReactor) {
+    func bind(reactor: DisplayHomeViewReactor) {
         var snapshot = self.dataSource.snapshot()
         
         reactor.state.map { $0.banners }
@@ -188,7 +188,7 @@ final class HomeViewController: BaseViewController, ReactorKit.View {
 
 // MARK: - Layout
 
-extension HomeViewController {
+extension DisplayHomeViewController {
     private func generateCollectionViewLayout() -> UICollectionViewLayout {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
         configuration.interSectionSpacing = 30
@@ -461,7 +461,7 @@ extension HomeViewController {
 
 // MARK: - DataSource
 
-extension HomeViewController {
+extension DisplayHomeViewController {
     private func makeSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<HomeSection, HomeItem>()
         snapshot.appendSections(HomeSection.allCases)
@@ -569,7 +569,7 @@ extension HomeViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension HomeViewController: UICollectionViewDelegate {
+extension DisplayHomeViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y < UIScreen.main.bounds.width * 0.6 {
             startTimer()
