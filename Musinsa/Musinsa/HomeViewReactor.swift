@@ -10,6 +10,7 @@ import ReactorKit
 final class HomeViewReactor: Reactor {
     enum Action {
         case refresh
+        case turnPageAutoScroll
         case turnPage(Int)
         case loadMore(Contents.`Type`)
         case newRecommend(Contents.`Type`)
@@ -17,6 +18,7 @@ final class HomeViewReactor: Reactor {
     
     enum Mutation {
         case replace([DisplaySection])
+        case turnPageAutoScroll
         case turnPage(Int)
         case append(Contents.`Type`)
         case shuffle(Contents.`Type`)
@@ -52,6 +54,9 @@ final class HomeViewReactor: Reactor {
         case .refresh:
             return useCase.fetchList()
                 .compactMap { .replace($0.data) }
+            
+        case .turnPageAutoScroll:
+            return .just(.turnPageAutoScroll)
             
         case .turnPage(let currentPage):
             return .just(.turnPage(currentPage))
@@ -100,6 +105,13 @@ final class HomeViewReactor: Reactor {
             }
             
             newState.sections = sections
+            
+        case .turnPageAutoScroll:
+            if newState.currentBannerPage < newState.bannersCount {
+                newState.currentBannerPage += 1
+            } else {
+                newState.currentBannerPage = 1
+            }
             
         case .turnPage(let currentPage):
             newState.currentBannerPage = currentPage

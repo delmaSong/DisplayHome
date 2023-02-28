@@ -45,6 +45,8 @@ final class HomeViewController: BaseViewController, ReactorKit.View {
     private var dataSource: DataSource!
     var disposeBag = DisposeBag()
     
+    private var timer: Timer?
+    
     private lazy var collectionView: UICollectionView = {
         let view = UICollectionView(
             frame: .zero,
@@ -77,6 +79,7 @@ final class HomeViewController: BaseViewController, ReactorKit.View {
             BannerCollectionViewCell.self,
             forCellWithReuseIdentifier: BannerCollectionViewCell.identifier
         )
+        view.delegate = self
         return view
     }()
     
@@ -89,6 +92,8 @@ final class HomeViewController: BaseViewController, ReactorKit.View {
         
         self.reactor = HomeViewReactor()
         reactor?.action.onNext(.refresh)
+        
+        startTimer()
     }
     
     override func addSubviews() {
@@ -149,6 +154,35 @@ final class HomeViewController: BaseViewController, ReactorKit.View {
                 snapshot.appendItems(styleItems, toSection: .style)
                 self?.dataSource.apply(snapshot)
             }.disposed(by: disposeBag)
+        
+        reactor.state.map { $0.currentBannerPage }
+            .skip(1)
+            .distinctUntilChanged()
+            .asDriver(onErrorJustReturn: 1)
+            .drive(onNext: { [weak self] page in
+                self?.collectionView.scrollToItem(
+                    at: IndexPath(row: page - 1, section: 0),
+                    at: .centeredHorizontally,
+                    animated: true
+                )
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+
+    private func startTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(
+            withTimeInterval: 3.0,
+            repeats: true,
+            block: { [weak self] timer in
+                self?.reactor?.action.onNext(.turnPageAutoScroll)
+            }
+        )
     }
 }
 
@@ -219,7 +253,14 @@ extension HomeViewController {
                   ) as? BannerCollectionViewCell
             else { return }
             cell.parallaxOffsetX(from: contentOffset)
-            self.reactor?.action.onNext(.turnPage(currentIndexPath.item + 1))
+            
+            let page = currentIndexPath.item + 1
+            if self.reactor?.currentState.currentBannerPage == 1 {
+                self.reactor?.action.onNext(.turnPage(1))
+            } else if let bannersCount = self.reactor?.currentState.bannersCount,
+                      bannersCount + 1 > page {
+                self.reactor?.action.onNext(.turnPage(page))
+            }
         }
         return section
     }
@@ -522,6 +563,18 @@ extension HomeViewController {
             default:
                 return UICollectionReusableView()
             }
+        }
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension HomeViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < UIScreen.main.bounds.width * 0.6 {
+            startTimer()
+        } else {
+            stopTimer()
         }
     }
 }
