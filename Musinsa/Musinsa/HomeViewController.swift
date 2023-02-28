@@ -370,17 +370,34 @@ extension HomeViewController {
         at section: NSCollectionLayoutSection,
         sectionIndex: Int
     ) {
-        reactor?.state.compactMap { $0.sections[safe: sectionIndex] }
-            .subscribe(onNext: { [weak self] in
+        guard let reactor = reactor else { return }
+        let sectionObservable = reactor.state.compactMap { $0.sections[safe: sectionIndex] }
+        let styleObservable = reactor.state.map {
+            $0.styles.count == $0.originStyles.count
+        }
+        let gridGoodsObservable = reactor.state.map {
+            $0.gridGoods.count == $0.originGoods.count
+        }
+        
+        Observable.combineLatest(
+            sectionObservable,
+            styleObservable,
+            gridGoodsObservable
+        ) { ($0, $1, $2) }
+            .subscribe(onNext: { [weak self] display, doneStyleLoad, doneGridGoodsLoad in
                 guard let self else { return }
-                if $0.header != nil {
+                
+                if display.header != nil {
                     let header = self.configureHeader()
                     section.boundarySupplementaryItems.append(header)
                 }
                 
-                if $0.footer != nil {
-                    let footer = self.configureFooter()
-                    section.boundarySupplementaryItems.append(footer)
+                if display.footer != nil {
+                    if (display.contents?.type == .style && !doneStyleLoad) ||
+                        (display.contents?.type == .grid && !doneGridGoodsLoad) {
+                        let footer = self.configureFooter()
+                        section.boundarySupplementaryItems.append(footer)
+                    }
                 }
             })
             .disposed(by: disposeBag)
